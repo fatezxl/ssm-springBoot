@@ -1,0 +1,40 @@
+#同一级目录下，application.yml会覆盖application.properties配置
+spring:
+  #关闭模板缓存，生成环境需要开启
+  thymeleaf:
+    cache: false
+  #配置数据源
+  datasource:
+    url: jdbc:mysql://localhost/lunchdb
+    username: root
+    password: mysql
+    #一般会根据url自动加载对应的驱动，但出错的话可以手动填写驱动：
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    database: mysql
+    
+#服务启动端口
+server:
+  port: 8099
+  
+  
+#Mybatis配置
+mybatis:
+  #mapper地址
+  mapper-locations: classpath*:com/sihuatech/ssm/mapper/xml/*.xml
+  #别名
+  type-aliases-package: com.sihuatech.ssm.model
+  
+  
+#日志配置
+logging:
+  #日志存储在E:/logs/book.log中
+  path: E:/springlogs/
+  file: book.log
+  level:
+    root: info
+    org:
+      springframework:
+        security:DEBUG
+    #或者org.springframework.security:DEBUG
+      
